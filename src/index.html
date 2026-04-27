@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denis | Portfolio</title>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white font-sans overflow-x-hidden">
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+        <div class="flex justify-between items-center p-4 max-w-6xl mx-auto">
+            <div class="text-2xl font-bold text-blue-500">D.</div>
+            <ul class="flex gap-4 md:gap-8">
+                <li><a href="#home" class="text-sm font-medium hover:text-blue-400 transition">Home</a></li>
+                <li><a href="#projects" class="text-sm font-medium hover:text-blue-400 transition">Proiecte</a></li>
+                <li><a href="#about" class="text-sm font-medium hover:text-blue-400 transition">Despre</a></li>
+                <li><a href="#contact" class="text-sm font-medium hover:text-blue-400 transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="mt-20">
+        <section id="home" class="min-h-screen flex items-center justify-center px-4">
+            <div class="bg-slate-800 p-8 md:p-12 rounded-3xl shadow-2xl border border-slate-700 text-center relative" data-aos="zoom-in">
+                <div class="mb-6 inline-block relative">
+                    <img src="/imgs/profile.png" alt="Denis" class="w-32 h-32 rounded-full border-4 border-blue-500 object-cover shadow-lg mx-auto">
+                    <div class="absolute inset-0 bg-blue-500 blur-3xl opacity-20 -z-10"></div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">DENIS</h1>
+                <p class="text-blue-400 text-lg md:text-xl font-medium mb-6">Informatics Student @ UPT | AI/ML Enthusiast</p>
+                <div class="flex gap-3 justify-center flex-wrap">
+                    <span class="px-4 py-1 bg-slate-700/50 rounded-full text-sm border border-slate-600">Full Stack JS Student</span>
+                    <span class="px-4 py-1 bg-slate-700/50 rounded-full text-sm border border-slate-600">NLP & Data Science</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-blue-500 mb-12 text-center" data-aos="fade-up">Proiecte Recente</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition group" data-aos="fade-right">
+                    <h3 class="text-xl font-bold mb-3">Real Estate Predictor</h3>
+                    <p class="text-gray-400 mb-4">Model ML bazat pe regresie pentru prețul locuințelor. Backend în <strong>FastAPI</strong> și interfață <strong>Gradio</strong>.</p>
+                    <div class="flex gap-2 mb-4">
+                        <span class="text-[10px] bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-800">Python</span>
+                        <span class="text-[10px] bg-green-900/30 text-green-400 px-2 py-1 rounded border border-green-800">FastAPI</span>
+                    </div>
+                    <a href="" target="_blank" class="text-blue-500 text-sm font-bold group-hover:underline">GitHub Repo →</a>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition group" data-aos="fade-left">
+                    <h3 class="text-xl font-bold mb-3">NLP Word Analyzer</h3>
+                    <p class="text-gray-400 mb-4">Analizor de text bazat pe Procesarea Limbajului Natural (NLP) pentru extragerea de insights din dataset-uri Kaggle.</p>
+                    <div class="flex gap-2 mb-4">
+                        <span class="text-[10px] bg-purple-900/30 text-purple-400 px-2 py-1 rounded border border-purple-800">NLP</span>
+                        <span class="text-[10px] bg-orange-900/30 text-orange-400 px-2 py-1 rounded border border-orange-800">Python</span>
+                    </div>
+                    <a href="https://github.com/Denx26/nlp_word_analyzer" target="_blank" class="text-blue-500 text-sm font-bold group-hover:underline">GitHub Repo →</a>
+                </div>
+                <div class="flex flex-col items-center align-middle bg-slate-800 p-6 rounded-2xl text-center border border-slate-700 hover:border-blue-500 transition group" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-4 text-blue-500">More Projects</h3>
+                    <p class="text-gray-400 mb-4"> Mai multe proiecte, coming soon...</p><br>
+                    <a href="https://github.com/Denx26" target="_blank" class="text-blue-500 text-sm font-bold group-hover:underline text-right">GitHub Profile →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-slate-800/50">
+            <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-blue-500 mb-6">Despre Mine</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                    Sunt un student pasionat de informatică la UPT, aflat în plină formare ca <strong>Full Stack Developer</strong> prin certificarea IBM. 
+                    Îmi place să leg lumea dezvoltării web de puterea Inteligenței Artificiale.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
+                        <span class="text-blue-400 font-bold">Frontend</span>
+                        <p class="text-xs text-gray-500">React, Tailwind</p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
+                        <span class="text-green-400 font-bold">Backend</span>
+                        <p class="text-xs text-gray-500">Node.js, Express, Django, FastAPI</p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
+                        <span class="text-yellow-400 font-bold">Database</span>
+                        <p class="text-xs text-gray-500">SQLite, SQL</p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
+                        <span class="text-purple-400 font-bold">AI/ML</span>
+                        <p class="text-xs text-gray-500">Python, FastAPI</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-blue-500 mb-4">Contact</h2>
+                <p class="text-gray-400 mb-8">Ești gata să construim ceva inteligent?</p>
+                <a href="mailto:denisiosif26@gmail.com" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg hover:scale-105 active:scale-95 inline-block">
+                    Trimite-mi un Email
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-8 text-center text-gray-600 text-sm border-t border-slate-800">
+        &copy; 2026 Denis - Student Informatics @ UPT
+    </footer>
+
+    <script>
+        AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+</html>
