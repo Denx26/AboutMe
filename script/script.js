@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.remove('text-blue-500');
 
             if (curent && link.getAttribute('href').includes(current)) {
-                link.classList.add('text-blue-500');hghi
+                link.classList.add('text-blue-500');
             }
         });
     });
