@@ -20,4 +20,15 @@ client = OpenAI(
 class Message(BaseModel):
     message: str
 
+@app.post("/chat")
+async def chat(msg: Message):
+    completion = client.chat.completions.create(
+        model="meta/llama-3.1-8b-instruct",
+        messages=[
+            {"role": "system", "content": "You a helpful assistant on Denis's portfolio website. Answer questions about Denis professionally."},
+            {"role": "user", "content": msg.message}
+        ],
+        max_tokens=500  
+    )
+    return {"response": completion.choices[0].message.content}
 
