@@ -7,14 +7,33 @@
     <title>Denis | Portfolio</title>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../script/script.js" defer></script>
+    <script src="/script/script.js" defer></script>
 </head>
 
+
+<div id="chatPopup" class="fixed bottom-20 right-6 w-80 md:w-96 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl hidden z-50 overflow-hidden">
+    <div class="bg-blue-600 p-4 font-bold flex justify-between items-center">
+        <span>Denis AI Assistant</span>
+        <button id="closeChat" class="text-white hover:text-gray-200">×</button>
+    </div>
+    <div id="chatDisplay" class="h-64 overflow-y-auto p-4 space-y-3 text-sm flex flex-col">
+        <div class="bg-slate-700 p-2 rounded-lg self-start max-w-[80%]" data-en="Hi! Ask me anything about Denis." data-ro="Salut! Întreabă-mă orice despre Denis.">Salut! Întreabă-mă orice despre Denis.</div>
+        <div id="botResponse" class="hidden"></div>
+    </div>
+    <div class="p-3 border-t border-slate-700 flex gap-2">
+        <input type="text" id="userInput" data-en="Ask anything..." placeholder="Ask anything..." class="flex-1 bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+        <button id="sendBtn" class="bg-blue-600 p-2 rounded-lg hover:bg-blue-500 transition"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<button id="chatBtn" class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-lg z-50 transition-all hover:scale-110 active:scale-95">
+    <i class="fa-solid fa-robot text-xl"></i>
+</button>
 
 <body class="bg-slate-900 text-white font-sans overflow-x-hidden">
 
@@ -22,17 +41,23 @@
         <div class="flex justify-between items-center p-4 max-w-6xl mx-auto">
             <div class="text-2xl font-bold text-blue-500">D.</div>
             <ul class="flex gap-4 md:gap-8">
-                <li><a href="#home" data-en ="Home" data-ro="Home" class="text-sm font-medium hover:text-blue-400 transition">Home</a></li>
-                <li><a href="#projects" data-en="Projects" data-ro="Proiecte" class="text-sm font-medium hover:text-blue-400 transition">Proiecte</a></li>
-                <li><a href="#about" data-en="About" data-ro="Despre" class="text-sm font-medium hover:text-blue-400 transition">Despre</a></li>
-                <li><a href="#contact" data-en="Contact" datac-ro="Contact" class="text-sm font-medium hover:text-blue-400 transition">Contact</a></li>
-                <li><button id="language-toggle" class="text-lg flex font-bold hover:text-blue-400 transition"><i class="fa-solid fa-earth-americas"></i></button></li>
-                
+                <li><a href="#home" data-en="Home" data-ro="Home"
+                        class="text-sm font-medium hover:text-blue-400 transition">Home</a></li>
+                <li><a href="#projects" data-en="Projects" data-ro="Proiecte"
+                        class="text-sm font-medium hover:text-blue-400 transition">Proiecte</a></li>
+                <li><a href="#about" data-en="About" data-ro="Despre"
+                        class="text-sm font-medium hover:text-blue-400 transition">Despre</a></li>
+                <li><a href="#contact" data-en="Contact" data-ro="Contact"
+                        class="text-sm font-medium hover:text-blue-400 transition">Contact</a></li>
+                <li><button id="language-toggle" class="text-lg flex font-bold hover:text-blue-400 transition"><i
+                            class="fa-solid fa-earth-americas"></i></button></li>
+
             </ul>
         </div>
     </nav>
+    <button id="chatBtn" class="rounded-full" data-en="Chat with AI" data-ro="Chat cu AI">Chat cu AI</button>
 
-    <main class="mt-20">
+    <main class="mb20">
         <section id="home" class="min-h-screen flex items-center justify-center px-4">
             <div class="bg-slate-800 p-8 md:p-12 rounded-3xl shadow-2xl border border-slate-700 text-center relative"
                 data-aos="zoom-in">
@@ -54,14 +79,20 @@
         </section>
 
         <section id="projects" class="py-20 max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-blue-500 mb-12 text-center" data-aos="fade-up">Proiecte Recente</h2>
+            <h2 class="text-3xl font-bold text-blue-500 mb-12 text-center" data-en="Recent Projects"
+                data-ro="Proiecte Recente" data-aos="fade-up">Proiecte Recente</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition group"
                     data-aos="fade-right">
                     <h3 class="text-xl font-bold mb-3">House Price Predictor</h3>
-                    <p class="text-gray-400 mb-4">Model ML bazat pe regresie pentru prețul locuințelor, ca main model
+                    <p class="text-gray-400 mb-4"
+                        data-en="ML Model based on regression for house prices, main model <strong>XGBoost</strong>. Backend in <strong>FastAPI</strong> with <strong>Gradio UI</strong>."
+                        data-ro="Model ML bazat pe regresie pentru prețul locuințelor, ca main model
                         <strong>XGBoost</strong>. Backend în <strong>FastAPI</strong> și interfață
-                        <strong>Gradio</strong>.</p>
+                        <strong>Gradio</strong>.">Model ML bazat pe regresie pentru prețul locuințelor, ca main model
+                        <strong>XGBoost</strong>. Backend în <strong>FastAPI</strong> și interfață
+                        <strong>Gradio</strong>.
+                    </p>
                     <div class="flex gap-2 mb-4">
                         <span
                             class="text-[10px] bg-blue-900/30 text-blue-400 px-2 py-1 rounded border border-blue-800">Python</span>
@@ -75,7 +106,12 @@
                 <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition group"
                     data-aos="fade-left">
                     <h3 class="text-xl font-bold mb-3">NLP Word Analyzer</h3>
-                    <p class="text-gray-400 mb-4">Analizor de text bazat pe Procesarea Limbajului Natural (NLP) pentru
+                    <p class="text-gray-400 mb-4" data-en="Text Analyzer based on <strong>Natural Language Processing (NLP)</strong> for insights extraction from text.  <br/><br/> <strong>Instructions
+                            and example is in GitHub repos ↓</strong>"
+                        data-ro="Analizor de text bazat
+                        pe <strong>Procesarea Limbajului Natural (NLP)</strong> pentru
+                        extragerea de insights din text. <br/><br/><strong>Instrucțiuni și exemplul se află în depozitul GitHub ↓</strong>">Analizor de text bazat
+                        pe <strong>Procesarea Limbajului Natural (NLP)</strong> pentru
                         extragerea de insights din text. <br /><br /><strong class="group-hover:underline">Instructions
                             and example is in GitHub repos ↓</strong></p>
                     <div class="flex gap-2 mb-4">
@@ -90,7 +126,9 @@
                 <div class="flex flex-col items-center align-middle bg-slate-800 p-6 rounded-2xl text-center border border-slate-800 hover:border-blue-500 transition group"
                     data-aos="fade-up">
                     <h3 class="text-xl font-bold mb-4 text-blue-500">More Projects</h3>
-                    <p class="text-gray-400 mb-4"> Mai multe proiecte, coming soon...</p><br>
+                    <p class="text-gray-400 mb-4" data-en="More projects to <strong>come</strong>."
+                        data-ro="Mai multe proiecte, <strong>în curând...</strong>"> Mai multe proiecte, coming soon...
+                    </p><br>
                     <a href="https://github.com/Denx26" target="_blank"
                         class="text-blue-500 text-sm font-bold group-hover:underline text-right">GitHub Profile →</a>
                 </div>
@@ -99,8 +137,11 @@
 
         <section id="about" class="py-20 bg-slate-800/50">
             <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-blue-500 mb-6">Despre Mine</h2>
-                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                <h2 class="text-3xl font-bold text-blue-500 mb-6" data-en="About Me" data-ro="Despre Mine">Despre Mine
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6" data-en="I am a passionate computer science student at UPT, currently training as a <strong>Full Stack Developer</strong> through IBM certification. 
+                    I love connecting the world of web development with the power of Artificial Intelligence." data-ro="Sunt un student pasionat de informatică la UPT, aflat în plină formare ca <strong>Full Stack Developer</strong> prin certificarea IBM. 
+                    Îmi place să leg lumea dezvoltării web de puterea Inteligenței Artificiale.">
                     Sunt un student pasionat de informatică la UPT, aflat în plină formare ca <strong>Full Stack
                         Developer</strong> prin certificarea IBM.
                     Îmi place să leg lumea dezvoltării web de puterea Inteligenței Artificiale.
@@ -108,7 +149,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
                         <span class="text-blue-400 font-bold">Frontend</span>
-                        <p class="text-xs text-gray-500">React, Tailwind</p>
+                        <p class="text-xs text-gray-500">React/JS, Tailwind</p>
                     </div>
                     <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
                         <span class="text-green-400 font-bold">Backend</span>
@@ -129,9 +170,9 @@
         <section id="contact" class="py-20 text-center">
             <div data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-blue-500 mb-4">Contact</h2>
-                <p class="text-gray-400 mb-8">Ești gata să construim ceva inteligent?</p>
+                <p class="text-gray-400 mb-8" data-en="You are ready to build something smart?" data-ro="Ești gata să construim ceva inteligent?">Ești gata să construim ceva inteligent?</p>
                 <a href="mailto:denisiosif26@gmail.com"
-                    class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg hover:scale-105 active:scale-95 inline-block">
+                    class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg hover:scale-105 active:scale-95 inline-block" data-en="Send me an Email" data-ro="Trimite-mi un Email">
                     Trimite-mi un Email
                 </a>
             </div>

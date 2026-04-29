@@ -5,9 +5,6 @@ if ('scrollRestoration' in history) {
 document.addEventListener('DOMContentLoaded', () => {
 
     window.scrollTo(0, 0);
-
-
-
     const toggleBtn = document.getElementById('language-toggle');
     let currentLang = 'ro';
 
@@ -16,32 +13,71 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLang = currentLang === 'ro' ? 'en' : 'ro';
             const translatableElements = document.querySelectorAll('[data-en]');
             translatableElements.forEach(el => {
-                el.innerText = el.getAttribute(`data-${currentLang}`);
-            });       
+                const newContent = el.getAttribute(`data-${currentLang}`);
+                if (newContent) {
+                    el.innerHTML = newContent;
+                }
+            });
+        });
+        AOS.refresh();
+    }
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+
+            if (pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('text-blue-500');
+
+            if (current && link.getAttribute('href').includes(current)) {
+                link.classList.add('text-blue-500');
+            }
+        });
     });
-}
 
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a');
+    const chatBtn = document.getElementById("chatBtn");
+    const chatPopup = document.getElementById("chatPopup");
+    const closeChat = document.getElementById("closeChat");
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
+    chatBtn.addEventListener("click", () => chatPopup.classList.toggle("hidden"));
+    closeChat.addEventListener("click", () => chatPopup.classList.add("hidden"));
 
-        if (pageYOffset >= sectionTop - 150) {
-            current = section.getAttribute('id');
-        }
-    });
+    document.getElementById("sendBtn").addEventListener("click", async () => {
+        const inputField = document.getElementById("userInput");
+        const display = document.getElementById("chatDisplay");
+        const message = inputField.value.trim();
 
-    navLinks.forEach(link => {
-        link.classList.remove('text-blue-500');
+        if (!message) return;
 
-        if (current && link.getAttribute('href').includes(current)) {
-            link.classList.add('text-blue-500');
+        display.innerHTML += `<div class="bg-blue-900/50 p-2 rounded-lg self-end max-w-[80%]">${message}</div>`;
+        inputField.value = "";
+        display.scrollTop = display.scrollHeight;
+
+        try {
+            const response = await fetch("http://localhost:8000/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            });
+
+            const data = await response.json();
+
+            display.innerHTML += `<div class="bg-slate-700 p-2 rounded-lg self-start max-w-[80%]">${data.response}</div>`;
+            display.scrollTop = display.scrollHeight;
+        } catch (error) {
+            console.error("Eroare Chat:", error);
+            display.innerHTML += `<div class="text-red-400 text-xs text-center italic">Eroare de conexiune la server.</div>`;
         }
     });
 });
 
 
-});
