@@ -1,4 +1,6 @@
 import json
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -27,9 +29,12 @@ except Exception as e:
     print(f"Error at JSON load: {e}")
     denis_info1 = {}
 
+load_dotenv()
+api_key = os.getenv("NVIDIA_API_KEY")
+
 client = OpenAI(
     base_url="https://integrate.api.nvidia.com/v1",
-    api_key="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" 
+    api_key = api_key 
 )
 
 class Message(BaseModel):
