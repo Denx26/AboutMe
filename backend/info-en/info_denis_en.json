@@ -1,0 +1,55 @@
+{
+    "name": "Denis",
+    "role": "Computer Science Student @ UPT",
+    "interests": [
+        "AI/ML Enthusiast",
+        "Data Science",
+        "Full Stack Development"
+    ],
+    "education": {
+        "faculty": "Politehnica University of Timișoara",
+        "extra_courses": "IBM Full Stack JavaScript Developer Professional Certificate (in progress)"
+    },
+    "main_projects": [
+        {
+            "name": "House Price Predictor",
+            "technologies": [
+                "Python",
+                "XGBoost",
+                "FastAPI",
+                "Gradio",
+                "Docker"
+            ],
+            "description": "ML model for real estate price prediction based on Kaggle datasets."
+        },
+        {
+            "name": "NLP Word Analyzer",
+            "technologies": [
+                "Python",
+                "NLP"
+            ],
+            "description": "Linguistic analyzer for extracting information from text."
+        }
+    ],
+    "contact": {
+        "email": "denisiosif26@gmail.com",
+        "github": "https://github.com/Denx26"
+    },
+    "personal-info": {
+        "age": 21,
+        "passions": [
+            "Artificial Intelligence/AI",
+            "NLP",
+            "Modern Web Development",
+            "Lifelong Learning"
+        ],
+        "philosophy": "I love building bridges between complex data and intuitive web interfaces."
+    },
+    "technical-identity": {
+        "future_interests": [
+            "Reinforcement Learning",
+            "LLM Fine-tuning"
+        ],
+        "internship_motivation": "I want to apply my AI/ML knowledge in an enterprise environment."
+    }
+}

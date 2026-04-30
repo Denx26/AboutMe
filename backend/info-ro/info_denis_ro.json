@@ -1,0 +1,55 @@
+{
+  "nume": "Denis",
+  "rol": "Student la Informatică @ UPT",
+  "interese": [
+    "AI/ML Enthusiast",
+    "Data Science",
+    "Full Stack Development"
+  ],
+  "educatie": {
+    "facultate": "Universitatea Politehnica Timișoara",
+    "cursuri_extra": "IBM Full Stack JavaScript Developer Professional Certificate (în curs)"
+  },
+  "proiecte_principale": [
+    {
+      "nume": "House Price Predictor",
+      "tehnologii": [
+        "Python",
+        "XGBoost",
+        "FastAPI",
+        "Gradio",
+        "Docker"
+      ],
+      "descriere": "Model ML pentru predicția prețurilor imobiliare bazat pe dataset-uri Kaggle."
+    },
+    {
+      "nume": "NLP Word Analyzer",
+      "tehnologii": [
+        "Python",
+        "NLP"
+      ],
+      "descriere": "Analizor lingvistic pentru extragerea de informații din text."
+    }
+  ],
+  "contact": {
+    "email": "denisiosif26@gmail.com",
+    "github": "https://github.com/Denx26"
+  },
+  "personal-info": {
+    "varsta": 21,
+    "pasiuni": [
+      "Inteligenta Artificiala/AI",
+      "NLP",
+      "Dezvoltare Web moderna",
+      "Invatare continua"
+    ],
+    "filozofie": "Imi place sa construiesc punti intre date complexe si interfete web intuitive."
+  },
+  "tehnical-identity": {
+    "interese_viitoare": [
+      "Reinforcement Learning",
+      "LLM Fine-tuning"
+    ],
+    "motivatie_internship": "Vreau sa aplic cunostintele de AI/ML intr-un mediu enterprise."
+  }
+}

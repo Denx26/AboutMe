@@ -14,11 +14,18 @@ app.add_middleware(
 )
 
 try:
-    with open("info_denis.json", "r", encoding="utf-8") as f:
+    with open("info-ro/info_denis_ro.json", "r", encoding="utf-8") as f:
         denis_info = json.load(f)
 except Exception as e:
     print(f"Eroare la încărcarea JSON-ului: {e}")
     denis_info = {}
+
+try:
+    with open("info-en/info_denis_en.json", "r", encoding="utf-8") as f1:
+        denis_info1 = json.load(f1)
+except Exception as e:
+    print(f"Error at JSON load: {e}")
+    denis_info1 = {}
 
 client = OpenAI(
     base_url="https://integrate.api.nvidia.com/v1",
@@ -41,7 +48,7 @@ async def chat(msg: Message):
             },
             {"role": "user", "content": msg.message}
         ],
-        max_tokens=500  
+        max_tokens=500
     )
     return {"response": completion.choices[0].message.content}
 
