@@ -7,8 +7,16 @@ from pydantic import BaseModel
 from google import genai
 from google.genai import types
 
-load_dotenv()
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -26,14 +34,15 @@ class Message(BaseModel):
 
 @app.post("/chat")
 async def chat(msg: Message):
-    context = denis_info if any(c in msg.message.lower() for c in "ăâîșț") else denis_info1
-    context_string = json.dumps(context, ensure_ascii=False)
-    
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=msg.message,
-        config=types.GenerateContentConfig(
-            system_instruction=(
+    try:
+        context = denis_info if any(c in msg.message.lower() for c in "ăâîșț") else denis_info1
+        context_string = json.dumps(context, ensure_ascii=False)
+        
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=msg.message,
+            config=types.GenerateContentConfig(
+                 system_instruction=(
                 f"Esti asistenul virtual inteligent al lui Denis."
                 f"Foloseste aceste date reale ca baza: {context_string}"
                 "Reguli de comportament: "
@@ -44,9 +53,10 @@ async def chat(msg: Message):
                 "4. Daca cineva te intreaba ceva ce nu e in JSON, raspunde bazandu-te pe 'viziunea' ta de asistent AI despre potentialul lui."
                 "5. Daca cineva te intreaba la fel, acelasi lucru sau contexte asemanatoare in English, sa ii raspunzi la fel in English. Fie ca incepe conversatia in English la fel sa continui in English sau daca intreaba ulterior. "                
             ),
-            max_output_tokens=200,
-            temperature=0.5
+                max_output_tokens=150
+            )
         )
-    )
-    
-    return {"response": response.text}
+        return {"response": response.text}
+    except Exception as e:
+        print(f"Eroare API: {e}")
+        return {"response": "Momentan am primit prea multe întrebări și mă odihnesc puțin. Reîncearcă în câteva secunde sau contactează-l pe Denis pe email!"}
