@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from openai import OpenAI
+from openai import AsyncOpenAI
 
 app = FastAPI()
 
@@ -32,9 +32,9 @@ except Exception as e:
 load_dotenv()
 api_key = os.getenv("NVIDIA_API_KEY")
 
-client = OpenAI(
+client = AsyncOpenAI(
     base_url="https://integrate.api.nvidia.com/v1",
-    api_key = api_key 
+    api_key=api_key 
 )
 
 class Message(BaseModel):
@@ -42,21 +42,24 @@ class Message(BaseModel):
 
 @app.post("/chat")
 async def chat(msg: Message):
-    context_string = json.dumps(denis_info, ensure_ascii=False)
+    # Folosește ambele contexte pentru a fi pregătit
+    context = denis_info if any(c in msg.message.lower() for c in "ăâîșț") else denis_info1
+    context_string = json.dumps(context, ensure_ascii=False)
     
-    completion = client.chat.completions.create(
-        model="meta/llama-3.1-8b-instruct", #
+    # ADAUGĂ 'await' aici - asta e cheia vitezei!
+    completion = await client.chat.completions.create(
+        model="meta/llama-3.1-8b-instruct",
         messages=[
             {
                 "role": "system", 
-                "content": f"Ești asistentul virtual de pe portofoliul lui Denis. Răspunde profesional și prietenos. Iată datele despre Denis pe care trebuie să le folosești: {context_string}. Dacă nu știi un răspuns, sugerează vizitatorului să-l contacteze pe Denis prin email."
+                "content": f"Ești asistentul lui Denis. Răspunde scurt folosind: {context_string}"
             },
             {"role": "user", "content": msg.message}
         ],
-        max_tokens=500
+        max_tokens=100,
+        temperature=0.5
     )
     return {"response": completion.choices[0].message.content}
-
 
 
 
