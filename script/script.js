@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display.scrollTop = display.scrollHeight;
 
         try {
-            const response = await fetch("aboutme-production-c79e.up.railway.app", {
+            const response = await fetch("[aboutme-production-c79e.up.railway.app/chat](aboutme-production-c79e.up.railway.app/chat)", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: message })
