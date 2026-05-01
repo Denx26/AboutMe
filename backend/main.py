@@ -20,13 +20,13 @@ load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
-for models in client.models.list():
-    print(f"Model name: {models.name}")    
+path1 = os.getenv("get_denis_ro")
+path2 = os.getenv("get_denis_en")
 
 try:
-    with open("./info-en/info_denis_en.json", "r", encoding="utf-8") as f:
+    with open(path1, "r", encoding="utf-8") as f:
         denis_info = json.load(f)
-    with open("./info-ro/info_denis_ro.json", "r", encoding="utf-8") as f1:
+    with open(path2, "r", encoding="utf-8") as f1:
         denis_info1 = json.load(f1)
 except Exception as e:
     print(f"Error loading JSON: {e}")

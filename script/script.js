@@ -51,19 +51,31 @@ document.addEventListener('DOMContentLoaded', () => {
     chatBtn.addEventListener("click", () => chatPopup.classList.toggle("hidden"));
     closeChat.addEventListener("click", () => chatPopup.classList.add("hidden"));
 
-    document.getElementById("sendBtn").addEventListener("click", async () => {
+    const sendBtn = document.getElementById("sendBtn")
+
+
+    
+    sendBtn.addEventListener("click", async () => {
         const inputField = document.getElementById("userInput");
         const display = document.getElementById("chatDisplay");
         const message = inputField.value.trim();
 
         if (!message) return;
 
+        sendBtn.diasbled=true;
+        sendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+        setTimeout(function() {
+            sendBtn.diasbled=false;
+            sendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }, 10000);
+
         display.innerHTML += `<div class="bg-blue-900/50 p-2 rounded-lg self-end max-w-[80%]">${message}</div>`;
         inputField.value = "";
         display.scrollTop = display.scrollHeight;
 
         try {
-            const response = await fetch("http://localhost:8000/chat", {
+            const response = await fetch("http://127.0.0.1:8001/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: message })
