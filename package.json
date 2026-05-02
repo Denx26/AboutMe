@@ -5,5 +5,8 @@
   },
   "scripts": {
     "dev": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
   }
 }
