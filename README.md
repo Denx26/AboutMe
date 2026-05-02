@@ -8,8 +8,8 @@ An intelligent virtual assistant that answers questions about my career, educati
 
 This repository hosts the asynchronous backend for my personal portfolio. The assistant functions as a *recruiter agent* that leverages state-of-the-art LLM models to provide contextual, personalized information to visitors.
 
-- **Frontend:** [View on Vercel](https://your-vercel-link.vercel.app)
-- **Backend API:** [View on Railway](https://your-railway-link.up.railway.app)
+- **Frontend:** [View on Vercel](https://about-me-eta-khaki.vercel.app/)
+- **Backend API:** [View on Railway](https://aboutme-production-c79e.up.railway.app/)
 
 ---
 
